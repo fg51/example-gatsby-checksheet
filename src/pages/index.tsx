@@ -3,18 +3,13 @@ import { useState } from "react"
 
 import {
   IonButton,
-  IonCard,
-  IonCardTitle,
-  IonCardContent,
   IonContent,
-  IonListHeader,
   IonItem,
   IonLabel,
   IonList,
   IonInput,
   IonPage,
   IonTitle,
-  IonToggle,
   IonHeader,
 } from "@ionic/react"
 
@@ -27,6 +22,8 @@ import "@ionic/react/css/padding.css"
 import "@ionic/react/css/text-alignment.css"
 
 import { InputSerialMs, InputSerialPump } from "../components/InputSerialMs"
+
+import { MainBase } from "../components/MainBase"
 
 import { IconPencil } from "../components/IconPencil"
 
@@ -55,66 +52,35 @@ export default function Home() {
       </IonHeader>
 
       <IonContent class="ion-padding" scrollEvents={true}>
-        <IonList>
-          <IonListHeader>メインベース組立</IonListHeader>
-
-          <IonCard>
-            <IonCardTitle>締結</IonCardTitle>
-            <IonCardContent>
-              <IonList>
-                <IonItem>
-                  <IonLabel>加工日</IonLabel> <IonInput />
-                  <IconPencil />
-                </IonItem>
-                <IonItem>
-                  <IonLabel>ベース製造番号</IonLabel> <IonInput />
-                  <IconPencil />
-                </IonItem>
-                <IonItem>
-                  <IonToggle />
-                  <IonLabel>止めねじ</IonLabel>
-                </IonItem>
-                <IonItem>
-                  <IonToggle />
-                  <IonLabel>80degC昇温</IonLabel>
-                </IonItem>
-                <IonItem>
-                  <IonToggle />
-                  <IonLabel>冷却</IonLabel>
-                </IonItem>
-                <IonItem>
-                  <IonLabel>モータ製造番号</IonLabel>
-                  <IonInput />
-                  <IconPencil />
-                </IonItem>
-              </IonList>
-            </IonCardContent>
-          </IonCard>
-
-          <IonCard>
-            <IonCardTitle>ベアリング組み込み</IonCardTitle>
-            <IonCardContent>
-              <IonItem>
-                <IonToggle />
-                <IonLabel>ベアリング製造番号</IonLabel> <IonInput />
-                <IconPencil />
-              </IonItem>
-            </IonCardContent>
-          </IonCard>
-        </IonList>
+        <MainBase />
 
         <form className="ion-padding" onSubmit={handleSubmit}>
-          <IonLabel>Name:</IonLabel>
-          <IonInput
-            type="text"
-            value={text}
-            onIonChange={event => setText(event.detail.value!)}
-          />
+          <Child text={text} setText={setText} />
+
           <IonButton className="ion-margin-top" type="submit" expand="block">
             送信
           </IonButton>
         </form>
       </IonContent>
     </IonPage>
+  )
+}
+
+
+type Props = {
+  text: string
+  setText: React.Dispatch<React.SetStateAction<string>>
+}
+
+const Child: React.FC<Props> = ({text, setText})=> {
+  return (
+    <>
+      <IonLabel>Name:</IonLabel>
+      <IonInput
+        type="text"
+        value={text}
+        onIonChange={event => setText(event.detail.value!)}
+      />
+    </>
   )
 }
