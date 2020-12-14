@@ -16,10 +16,18 @@ import {
 } from "@ionic/react"
 
 import "@ionic/react/css/core.css"
+import "@ionic/react/css/structure.css"
+import "@ionic/react/css/typography.css"
+import "@ionic/react/css/normalize.css"
+
+import "@ionic/react/css/padding.css"
+import "@ionic/react/css/text-alignment.css"
 
 import { pencil } from "ionicons/icons"
 
 import { InputSerialMs, InputSerialPump } from "../components/InputSerialMs"
+
+import { IconPencil } from "../components/IconPencil"
 
 export default function Home() {
   return (
@@ -29,11 +37,11 @@ export default function Home() {
       <IonList>
         <IonItem>
           <IonLabel>製造番号</IonLabel> <InputSerialMs />
-          <IonIcon icon={pencil} />
+          <IconPencil />
         </IonItem>
         <IonItem>
           <IonLabel>main 製造番号</IonLabel> <InputSerialPump />
-          <IonIcon icon={pencil} />
+          <IconPencil />
         </IonItem>
       </IonList>
 
@@ -45,12 +53,12 @@ export default function Home() {
           <IonCardContent>
             <IonList>
               <IonItem>
-                <IonLabel>加工日</IonLabel> <IonInput />{" "}
-                <IonIcon icon={pencil} />
+                <IonLabel>加工日</IonLabel> <IonInput />
+                <IconPencil />
               </IonItem>
               <IonItem>
                 <IonLabel>ベース製造番号</IonLabel> <IonInput />
-                <IonIcon icon={pencil} />
+                <IconPencil />
               </IonItem>
               <IonItem>
                 <IonToggle />
@@ -67,7 +75,7 @@ export default function Home() {
               <IonItem>
                 <IonLabel>モータ製造番号</IonLabel>
                 <IonInput />
-                <IonIcon icon={pencil} />
+                <IconPencil />
               </IonItem>
             </IonList>
           </IonCardContent>
@@ -79,7 +87,7 @@ export default function Home() {
             <IonItem>
               <IonToggle />
               <IonLabel>ベアリング製造番号</IonLabel> <IonInput />
-              <IonIcon icon={pencil} />
+              <IconPencil />
             </IonItem>
           </IonCardContent>
         </IonCard>
